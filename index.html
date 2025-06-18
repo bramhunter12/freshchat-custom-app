@@ -1,0 +1,62 @@
+<!-- freshchat-custom-app/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mailbox Info Lookup</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 1rem; font-size: 14px; }
+    .header { font-weight: bold; margin-bottom: 0.5rem; }
+    .value { margin-bottom: 1rem; color: #333; }
+    .status { font-weight: bold; color: green; }
+    .error { color: red; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div class="header">Customer Mailbox Info</div>
+    <div class="value" id="cid"></div>
+    <div class="value" id="mailCenter"></div>
+    <div class="value" id="plan"></div>
+    <div class="value" id="status"></div>
+    <div class="error" id="error"></div>
+  </div>
+
+  <script>
+    // Simulated user object for local testing
+    const testUser = {
+      externalId: "623740"
+    };
+
+    async function loadCustomerData(user) {
+      const cid = user.externalId || user.identifier;
+      if (!cid) {
+        document.getElementById("error").innerText = "Missing CID (external_id or identifier).";
+        return;
+      }
+
+      document.getElementById("cid").innerText = `Mailbox ID: ${cid}`;
+
+      try {
+        // Simulated data for local testing
+        const data = {
+          mail_center: "Plumas Lake Self Storage",
+          plan: "Green Plan 30",
+          status: "Approved"
+        };
+
+        document.getElementById("mailCenter").innerText = `Mail Center: ${data.mail_center}`;
+        document.getElementById("plan").innerText = `Plan: ${data.plan}`;
+        document.getElementById("status").innerText = `1583 Status: ${data.status}`;
+
+      } catch (err) {
+        document.getElementById("error").innerText = `Failed to fetch customer data.`;
+        console.error(err);
+      }
+    }
+
+    // Call function directly for local testing
+    loadCustomerData(testUser);
+  </script>
+</body>
+</html>
