@@ -2,7 +2,8 @@
 import axios from 'axios';
 
 export default async function handler(req, res) {
-  const { cid } = req.query;
+  // Manually extract the CID from the URL path
+  const cid = req.url.split('/').pop();
 
   if (!cid) {
     return res.status(400).json({ error: "CID is required" });
@@ -37,3 +38,4 @@ export default async function handler(req, res) {
     res.status(500).json({ error: "Internal server error" });
   }
 }
+
