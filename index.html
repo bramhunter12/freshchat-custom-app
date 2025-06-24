@@ -23,10 +23,18 @@
   </div>
 
   <script>
-    // Simulated user object for local testing
-    const testUser = {
-      externalId: "623740"
-    };
+    // Triggered when the Freshchat app is loaded
+    window.fcWidgetInit = function () {
+      window.fcWidget.on("user:created", function (user) {
+        loadCustomerData(user);
+      });
+
+      window.fcWidget.user.get().then(function(user) {
+        loadCustomerData(user);
+      }).catch(() => {
+        document.getElementById("error").innerText = "Unable to retrieve user context.";
+      });
+    }
 
     async function loadCustomerData(user) {
       const cid = user.externalId || user.identifier;
@@ -38,13 +46,12 @@
       document.getElementById("cid").innerText = `Mailbox ID: ${cid}`;
 
       try {
-        // Simulated data for local testing
-        const data = {
-          mail_center: "Plumas Lake Self Storage",
-          plan: "Green Plan 30",
-          status: "Approved"
-        };
+        // Replace this with your own backend API
+        const response = await fetch(`https://freshchat-custom-pzjss3rst-bram-corregans-projects.vercel.app/api/customer-info/${cid}`);
 
+        if (!response.ok) throw new Error("Invalid response from server");
+
+        const data = await response.json();
         document.getElementById("mailCenter").innerText = `Mail Center: ${data.mail_center}`;
         document.getElementById("plan").innerText = `Plan: ${data.plan}`;
         document.getElementById("status").innerText = `1583 Status: ${data.status}`;
@@ -54,9 +61,7 @@
         console.error(err);
       }
     }
-
-    // Call function directly for local testing
-    loadCustomerData(testUser);
   </script>
+  <script src="https://wchat.freshchat.com/js/widget.js"></script>
 </body>
 </html>

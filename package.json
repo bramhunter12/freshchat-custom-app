@@ -1,0 +1,22 @@
+{
+  "name": "freshchat-custom-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bramhunter12/freshchat-custom-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bramhunter12/freshchat-custom-app/issues"
+  },
+  "homepage": "https://github.com/bramhunter12/freshchat-custom-app#readme",
+  "description": "",
+  "dependencies": {
+    "axios": "^1.10.0"
+  }
+}
