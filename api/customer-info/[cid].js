@@ -2,6 +2,8 @@
 import axios from 'axios';
 
 export default async function handler(req, res) {
+  console.log("DEBUG - req.url:", req.url);
+  console.log("DEBUG - req.query:", req.query);  // <-- This should show cid
   const { cid } = req.query; // ✅ Proper way to get dynamic [cid] from URL
 
   if (!cid) {
