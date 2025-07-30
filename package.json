@@ -18,6 +18,9 @@
   "homepage": "https://github.com/bramhunter12/freshchat-custom-app#readme",
   "description": "",
   "dependencies": {
-    "axios": "^1.10.0"
+    "axios": "^1.10.0",
+    "next": "^15.4.5",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
   }
 }
