@@ -33,6 +33,7 @@ export default async function handler(req, res) {
       mail_center: fields.cf_mail_center_for_campaign || "N/A",
       plan: fields.cf_mailbox_plan || "N/A",
       status: fields.cf_1583_doc_status || "N/A",
+      member_since: fields.cf_plan_start_date || null,
     });
   } catch (err) {
     console.error("API error:", err.response?.data || err.message);
