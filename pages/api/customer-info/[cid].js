@@ -31,6 +31,7 @@ export default async function handler(req, res) {
 
     return res.status(200).json({
       mail_center: fields.cf_mail_center_for_campaign || "N/A",
+      mailbox_status: fields.cf_mailbox_account_status || null,
       plan: fields.cf_mailbox_plan || "N/A",
       status: fields.cf_1583_doc_status || "N/A",
       member_since: fields.cf_plan_start_date || null,
